@@ -14,9 +14,12 @@ public interface WeedDao {
     //read
     List<Weed> getAll();
 
+    //find
+
     Weed findById(int id);
+
     //update
-    void update(int id, String content, int storeId);
+    void update(int id, String weedName, String description, String strain, String origin, int storeId);
     //delete
     void deleteById(int id);
 

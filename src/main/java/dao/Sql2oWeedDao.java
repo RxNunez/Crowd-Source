@@ -21,11 +21,17 @@ public class Sql2oWeedDao implements WeedDao {
 
     @Override
     public void add(Weed weed) {
-        String sql = "INSERT INTO weed (description, storeId) VALUES (:description, :storeId)"; //raw sql
+        String sql = "INSERT INTO weed (weedname, strain, origin, description, storeid) VALUES (:weedname, :strain, :origin, :description, :storeid)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql) //make a new variable
+                    .addParameter("weedname", weed.getWeedName())
+                    .addParameter("strain", weed.getStrain())
+                    .addParameter("origin", weed.getOrigin())
                     .addParameter("description", weed.getDescription())
-                    .addParameter("storeId", weed.getStoreId())
+                    .addParameter("storeid", weed.getStoreId())
+                    .addColumnMapping("WEEDNAME", "weedName")
+                    .addColumnMapping("STRAIN", "strain")
+                    .addColumnMapping("ORIGIN", "origin")
                     .addColumnMapping("DESCRIPTION", "description")
                     .addColumnMapping("STOREID", "storeId")
                     .executeUpdate() //run it all
@@ -53,12 +59,15 @@ public class Sql2oWeedDao implements WeedDao {
     }
 
     @Override
-    public void update(int id, String newDescription, int newStoreId){
-        String sql = "UPDATE weed SET (description, storeId) = (:description, :storeId) WHERE id=:id";
+    public void update(int id, String newWeedName, String newDescription, String newStrain, String newOrigin, int newStoreId){
+        String sql = "UPDATE weed SET (weedname, strain, origin, description, storeid) = (:weedname, :strain, :origin, :description, :storeid) WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
+                    .addParameter("weedname", newWeedName)
+                    .addParameter("strain", newStrain)
+                    .addParameter("origin", newOrigin)
                     .addParameter("description", newDescription)
-                    .addParameter("storeId", newStoreId)
+                    .addParameter("storeid", newStoreId)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {

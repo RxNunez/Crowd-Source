@@ -2,15 +2,15 @@ SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS weed (
   id int PRIMARY KEY auto_increment,
-  weedName VARCHAR,
+  weedname VARCHAR,
   description VARCHAR,
   strain VARCHAR,
   origin VARCHAR,
-  storeId int
+  storeid int
 
 );
 
 CREATE TABLE IF NOT EXISTS store (
 id int PRIMARY KEY auto_increment,
-storeName VARCHAR
+storename VARCHAR
 );

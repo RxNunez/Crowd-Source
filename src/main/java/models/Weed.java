@@ -29,18 +29,18 @@ public class Weed {
 
         if (id != weed.id) return false;
         if (storeId != weed.storeId) return false;
-        if (!weedName.equals(weed.weedName)) return false;
-        if (!description.equals(weed.description)) return false;
-        if (!strain.equals(weed.strain)) return false;
-        return origin.equals(weed.origin);
+        if (weedName != null ? !weedName.equals(weed.weedName) : weed.weedName != null) return false;
+        if (description != null ? !description.equals(weed.description) : weed.description != null) return false;
+        if (strain != null ? !strain.equals(weed.strain) : weed.strain != null) return false;
+        return origin != null ? origin.equals(weed.origin) : weed.origin == null;
     }
 
     @Override
     public int hashCode() {
-        int result = weedName.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + strain.hashCode();
-        result = 31 * result + origin.hashCode();
+        int result = weedName != null ? weedName.hashCode() : 0;
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (strain != null ? strain.hashCode() : 0);
+        result = 31 * result + (origin != null ? origin.hashCode() : 0);
         result = 31 * result + id;
         result = 31 * result + storeId;
         return result;
@@ -93,4 +93,5 @@ public class Weed {
     public void setStoreId(int storeId) {
         this.storeId = storeId;
     }
+
 }
