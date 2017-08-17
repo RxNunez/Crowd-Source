@@ -23,7 +23,7 @@ public interface StoreDao {
     void update(int id, String name);
 
     //delete
-//    void deleteById(int id);
+    void deleteById(int id);
     void deleteStoreById(int storeId);
     void clearAllStore();
 }

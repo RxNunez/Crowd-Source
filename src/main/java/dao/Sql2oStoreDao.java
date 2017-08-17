@@ -20,9 +20,11 @@ public class Sql2oStoreDao implements StoreDao{
     }
     @Override
     public void add(Store store) {
-        String sql = "INSERT INTO stores (storeName) VALUES (:storeName)"; //raw sql
+        String sql = "INSERT INTO store (storename) VALUES (:storename)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql) //make a new variable
+                    .addParameter("storename", store.getStoreName())
+                    .addColumnMapping("STORENAME", "storeName")
                     .bind(store) //map my argument onto the query so we can use information from it
                     .executeUpdate() //run it all
                     .getKey(); //int id is now the row number (row “key”) of db
@@ -59,6 +61,11 @@ public class Sql2oStoreDao implements StoreDao{
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public void deleteById(int id) {
+
     }
 
     @Override

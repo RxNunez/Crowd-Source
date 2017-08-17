@@ -44,11 +44,11 @@ public class Sql2oWeedDaoTest {
     }
 
     @Test
-public void existingWeedCanBeFoundById() throws Exception {
-    Weed weed = new Weed("Boss OG","","","",1);
-    weedDao.add(weed); //add to dao (takes care of saving)
-    Weed foundWeed = weedDao.findById(weed.getId()); //retrieve
-    assertEquals(weed, foundWeed); //should be the same
+    public void existingWeedCanBeFoundById() throws Exception {
+        Weed weed = new Weed("Boss OG","","","",1);
+        weedDao.add(weed); //add to dao (takes care of saving)
+        Weed foundWeed = weedDao.findById(weed.getId()); //retrieve
+        assertEquals(weed, foundWeed); //should be the same
     }
 
     @Test
