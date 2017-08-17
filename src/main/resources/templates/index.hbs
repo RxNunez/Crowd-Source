@@ -1,0 +1,15 @@
+{{#partial "content"}}
+
+    <h1> List of Om!</h1>
+    <p>Current weed:</p>
+    {{#if weeds}}
+
+        {{#each weeds }}
+            <p>{{weedName}}<a href="/stores/{{storeId}}/weeds/{{id}}">read more...</a></p>
+        {{/each}}
+    {{else}}
+        <p>No Weed!</p>
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

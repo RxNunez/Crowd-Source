@@ -1,0 +1,26 @@
+{{#partial "content"}}
+
+   {{#if editStore}}
+       <h1>Edit this store!</h1>
+       <form action="/stores/update" method="post">
+       <select name="editStoreId" id="editStoreId">
+       {{#each stores }}
+           <option value="{{id}}">{{name}}</option>
+       {{/each}}
+       </select>
+           <label for="name">Edit this store's name</label>
+           <input id="newStoreName" name="newStoreName" type="text" placeholder="new category name">
+
+   {{else}}
+           <h1>Add a new Store!</h1>
+
+       <form action="/stores" method="post">
+           <label for="name">Store Name</label>
+           <input id="name" name="name" type="text">
+
+   {{/if}}
+       <button type="submit" class="btn btn-default">Go!</button>
+   </form>
+{{/partial}}
+
+{{> layout.hbs}}

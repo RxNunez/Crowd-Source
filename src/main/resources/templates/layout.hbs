@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}WeedList{{/block}}</title>
+
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="/weeds/new">Add a New Weed</a></li>
+
+    <li role="presentation" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            Store Menu <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            {{#if stores}}
+                {{#each stores}}
+                    <li><a href="/stores/{{id}}">{{name}}</a></li>
+                {{/each}}
+                <li role="presentation"><a href="/stores/new">Add a New Store</a></li>
+
+            {{else}}
+                <li><a href="/stores/new">Add a Category</a></li>
+            {{/if}}
+        </ul>
+    </li>
+</ul>
+<div class="container">
+    <!--begin main template-->
+    <div class="page-header">
+        <img src="/images/background.jpeg" width="70%" alt="https://unsplash.com/search/task?photo=Lh_bn9SgRSY">
+        <h1>Welcome to my Weed List. <small>Let's explore Oregon's variety in recreation.</small></h1>
+    </div>
+
+    <div class="col-md-12">
+        {{#block "content"}}
+        {{/block}}
+
+    </div>
+</div>
+
+<!--end main template-->
+{{#block "footer"}}
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted"><a href="/weeds/delete">DELETE ALL WEED</a></p>
+        </div>
+    </footer>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </html>
+{{/block}}
